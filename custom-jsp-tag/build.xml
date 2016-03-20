@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 
-<project default="package" name="custom-jsp-tag">
+<project xmlns:ivy="antlib:org.apache.ivy.ant" default="package" name="custom-jsp-tag">
 
 	<description>Lab to develop jsp custom tag</description>
 
@@ -10,6 +10,12 @@
 	<property name="distDir" location="dist" />
 	<property name="libDir" location="lib" />
 	<property name="websrcDir" location="web" />
+
+	<path id="class.path">
+		<fileset dir="${libDir}">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
 
 	<target name="clean">
 		<delete dir="${buildDir}" />
@@ -22,8 +28,14 @@
 		<mkdir dir="${distDir}" />
 	</target>
 
-	<target name="compile" depends="init">
-		<javac srcdir="src" destdir="${classesDir}" classpath="${libDir}/jsp-api.jar" />
+	<target name="resolve" depends="init" description="--> retrieve dependencies with ivy">
+		<ivy:retrieve />
+	</target>
+
+	<target name="compile" depends="resolve">
+		<javac srcdir="src" destdir="${classesDir}">
+			<classpath refid="class.path" />
+		</javac>
 	</target>
 
 	<target name="package" depends="compile">

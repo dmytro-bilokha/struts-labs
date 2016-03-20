@@ -1,0 +1,6 @@
+<ivy-module version="2.0">
+    <info organisation="org.apache" module="ivy-dep"/>
+    <dependencies>
+	<dependency org="javax.servlet" name="jsp-api" rev="2.0"/>
+    </dependencies>
+</ivy-module>
