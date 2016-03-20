@@ -25,6 +25,7 @@
 	<target name="init">
 		<tstamp />
 		<mkdir dir="${classesDir}" />
+		<mkdir dir="${libDir}" />
 		<mkdir dir="${distDir}" />
 	</target>
 
