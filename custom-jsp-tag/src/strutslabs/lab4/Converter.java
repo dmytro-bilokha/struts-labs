@@ -23,29 +23,32 @@ package strutslabs.lab4;
 import javax.servlet.jsp.tagext.BodyTagSupport;
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.BodyContent;
+import java.util.logging.*;
 
 public class Converter extends BodyTagSupport {
+
+	private final static Logger logger = Logger.getLogger(Converter.class.getName());
 
 	private final static String KELVIN_STARTS_WITH = "K";
 	private final static String FAHRENHEIT_STARTS_WITH = "F";
 
-	private String to = "Fahrenheit";
+	private String to;
 
 	public int doAfterBody() {
-
 		try {
 			BodyContent bc = getBodyContent();
 			JspWriter out = bc.getEnclosingWriter();
 			double degrees = Double.parseDouble(bc.getString());
-			if (to.startsWith(KELVIN_STARTS_WITH))
-				out.write(Double.toString(toKelvin(degrees)));
+			if (to == null || to.length() == 0 || to.startsWith(FAHRENHEIT_STARTS_WITH))
+				out.print(toFahrenheit(degrees));
+			else if (to.startsWith(KELVIN_STARTS_WITH))
+				out.print(toKelvin(degrees));
 			else
-				out.write(Double.toString(toFahrenheit(degrees)));
-		} catch (Exception ignore) {
+				throw new IllegalArgumentException("Unsupported tag parameter: " + to);
+		} catch (Exception ex) {
+			logger.log(Level.SEVERE, "Exception in converter class", ex);
 		}
-
 		return EVAL_PAGE; // tells servlet container to process rest of JSP
-							// page.
 	}
 
 	private double toFahrenheit(double c) {
