@@ -30,7 +30,7 @@
 	</target>
 
 	<target name="resolve" depends="init" description="--> retrieve dependencies with ivy">
-		<ivy:retrieve />
+		<ivy:retrieve pattern="${libDir}/[artifact]-[revision].[ext]"/>
 	</target>
 
 	<target name="compile" depends="resolve">
