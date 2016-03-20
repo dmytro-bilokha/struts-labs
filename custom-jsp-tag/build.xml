@@ -11,7 +11,7 @@
 	<property name="libDir" location="lib" />
 	<property name="websrcDir" location="web" />
 
-	<path id="class.path">
+	<path id="build.classpath">
 		<fileset dir="${libDir}">
 			<include name="**/*.jar" />
 		</fileset>
@@ -30,12 +30,13 @@
 	</target>
 
 	<target name="resolve" depends="init" description="--> retrieve dependencies with ivy">
-		<ivy:retrieve pattern="${libDir}/[artifact]-[revision].[ext]"/>
+		<ivy:retrieve pattern="${libDir}/[artifact]-[revision].[ext]" sync="true" />
 	</target>
 
 	<target name="compile" depends="resolve">
-		<javac srcdir="src" destdir="${classesDir}">
-			<classpath refid="class.path" />
+		<javac destdir="${classesDir}">
+			<src path="src" />
+			<classpath refid="build.classpath" />
 		</javac>
 	</target>
 
