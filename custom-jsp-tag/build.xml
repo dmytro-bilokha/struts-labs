@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+
+<project default="package" name="custom-jsp-tag">
+
+	<description>Lab to develop jsp custom tag</description>
+
+	<property name="srcDir" location="src" />
+	<property name="buildDir" location="build" />
+	<property name="classesDir" location="${buildDir}/WEB-INF/classes" />
+	<property name="distDir" location="dist" />
+	<property name="libDir" location="lib" />
+	<property name="websrcDir" location="web" />
+
+	<target name="clean">
+		<delete dir="${buildDir}" />
+		<delete dir="${distDir}" />
+	</target>
+
+	<target name="init">
+		<tstamp />
+		<mkdir dir="${classesDir}" />
+		<mkdir dir="${distDir}" />
+	</target>
+
+	<target name="compile" depends="init">
+		<javac srcdir="src" destdir="${classesDir}" classpath="${libDir}/jsp-api.jar" />
+	</target>
+
+	<target name="package" depends="compile">
+		<copy todir="${buildDir}/WEB-INF" verbose="true">
+			<fileset dir="${websrcDir}/WEB-INF">
+				<include name="*.tld" />
+				<include name="*.xml" />
+			</fileset>
+		</copy>
+
+		<copy todir="${buildDir}" verbose="true">
+			<fileset dir="${websrcDir}">
+				<include name="*.jsp" />
+			</fileset>
+		</copy>
+
+		<jar destfile="${distDir}/custom-jsp-tag.war" basedir="${buildDir}">
+		</jar>
+	</target>
+
+</project>
