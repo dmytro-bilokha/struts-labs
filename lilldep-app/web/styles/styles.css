@@ -1,0 +1,126 @@
+/* Copyright 2005 Thinksquared IT Services */
+/* All associated images copyright Thinksquared IT Services */
+
+body {
+	/* font-family: verdana, arial, sans-serif; */
+	font-family: "Trebuchet MS", Verdana, sans-serif;
+	margin: 0;
+	background: #dddddd;	
+}
+
+p, li{
+	margin-top: 0;
+	font-size: 80%;
+}
+
+h1{
+	margin: 1em 0 0 0;
+	font-size: 130%;
+	font-weight: normal;
+	text-decoration: none;
+	color: #40659B;
+}
+
+.title{
+	margin: 1em 0 1em 0;
+	font-size: 160%;
+	font-weight: bold;
+	text-decoration: none;
+	color: #40659B;
+}
+
+h2{
+	margin: 1em 0 0 0;
+	font-size: 100%;
+	font-weight: bold;
+	text-decoration: none;
+	color: #40659B;
+}
+
+form{
+	font-size: 80%;
+	padding: 10px;	
+}
+
+input,textarea{
+	border: 1px solid #aaa;
+	margin: 0;
+}
+
+dd{
+	font-size: 80%;
+}
+
+dt{
+	font-size: 100%;
+	color: #444;
+}
+
+dl{
+	margin-left: 35px;
+}
+
+form dd, form dt{
+	margin: 0;
+	font-size: 100%;
+}
+
+td{
+    border: 1px solid white;
+}
+
+
+#navbar{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+	background: black;
+	line-height: 20px;
+}
+
+#navbar li{
+	margin: 0;
+	padding: 0;
+	display: inline;
+	list-style: none;
+	border-right: 1px solid white;	
+}
+
+#navbar a{
+	margin: 0 10px 4px 10px; 
+	text-decoration: none;
+	color: white;
+	font-size: 10pt;
+    voice-family: "\"}\"";
+    voice-family: inherit;
+	letter-spacing: 3px;	
+}
+
+#navbar a:hover{
+	color: #aaa;
+}
+
+#navbar .selected{
+	font-weight: bold;
+}
+
+#footer {
+	clear: both;
+    margin-top: 10px;
+	background: black;
+	font-size: 8pt;
+}
+
+#footer p{
+    margin : 0;
+    padding: 5px;
+	color: #aaa;
+}
+
+#footer a{
+	color: white;
+}
+
+.indented{
+    margin-left:2em;
+}

@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+
+<project xmlns:ivy="antlib:org.apache.ivy.ant" default="package" name="contact-form-lab6">
+
+	<description>Lab to develop simple contact web form</description>
+
+	<property name="srcDir" location="src" />
+	<property name="buildDir" location="build" />
+	<property name="distDir" location="deploy" />
+	<property name="libDir" location="lib" />
+	<property name="websrcDir" location="web" />
+	<property name="verbosity" location="true" />
+
+	<path id="build.classpath">
+		<fileset dir="${libDir}">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+
+	<path id="createdb.classpath">
+		<fileset dir="${libDir}">
+			<include name="**/derby*.jar" />
+		</fileset>
+		<fileset dir="${buildDir}/WEB-INF/classes">
+			<include name="**/*.class" />
+		</fileset>
+	</path>
+
+	<target name="clean" description="--> remove package, classes and libs">
+		<delete dir="${buildDir}" />
+		<delete dir="${distDir}" />
+		<delete includeemptydirs="true">
+			<fileset dir="${libDir}" includes="**/*" />
+		</delete>
+	</target>
+
+	<target name="init" depends="clean" description="--> create dirs">
+		<tstamp />
+		<mkdir dir="${buildDir}/WEB-INF/lib" />
+		<mkdir dir="${buildDir}/WEB-INF/classes" />
+		<mkdir dir="${buildDir}/styles" />
+		<mkdir dir="${buildDir}/js" />
+		<mkdir dir="${libDir}" />
+		<mkdir dir="${distDir}" />
+	</target>
+
+	<target name="resolve" depends="init" description="--> retrieve dependencies with ivy">
+		<ivy:retrieve pattern="${libDir}/[artifact]-[type]-[revision].[ext]" />
+	</target>
+
+	<target name="compile" depends="resolve" description="--> compile project">
+		<javac destdir="${buildDir}/WEB-INF/classes">
+			<src path="src" />
+			<classpath refid="build.classpath" />
+		</javac>
+	</target>
+
+	<target name="package" depends="compile" description="--> create project package">
+		<copy todir="${buildDir}/WEB-INF" verbose="${verbosity}">
+			<fileset dir="${websrcDir}/WEB-INF">
+				<include name="*.tld" />
+				<include name="*.xml" />
+			</fileset>
+		</copy>
+
+		<copy todir="${buildDir}" verbose="${verbosity}">
+			<fileset dir="${websrcDir}">
+				<include name="*.*" />
+			</fileset>
+		</copy>
+
+		<copy todir="${buildDir}/styles" verbose="${verbosity}">
+			<fileset dir="${websrcDir}/styles">
+				<include name="*.*" />
+			</fileset>
+		</copy>
+
+		<copy todir="${buildDir}/classes" verbose="${verbosity}">
+			<fileset dir="${websrcDir}/resources">
+				<include name="*.properties" />
+			</fileset>
+		</copy>
+
+		<copy todir="${buildDir}/lib" verbose="${verbosity}">
+			<fileset dir="${libDir}">
+				<include name="*.jar" />
+				<exclude name="servlet-api*.jar" />
+			</fileset>
+		</copy>
+
+		<java classname="net.thinksquared.lilldep.database.DatabaseSetup" fork="true"
+			dir="${buildDir}" failonerror="true">
+			<classpath>
+				<path refid="build.classpath" />
+				<path location="${buildDir}/WEB-INF/classes" />
+			</classpath>
+		</java>
+
+		<jar destfile="${distDir}/${ant.project.name}.war" basedir="${buildDir}">
+		</jar>
+	</target>
+
+</project>

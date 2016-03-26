@@ -1,0 +1,12 @@
+<ivy-module version="2.0">
+    <info organisation="org.apache" module="ivy-dep"/>
+    <configurations defaultconfmapping="default">
+	<conf name="default"/>
+    </configurations>
+    <dependencies>
+	<dependency org="javax.servlet.jsp" name="jsp-api" rev="2.2"/>
+	<dependency org="javax.servlet" name="servlet-api" rev="2.5"/>
+	<dependency org="struts" name="struts" rev="1.2.9"/>
+	<dependency org="org.apache.derby" name="derby" rev="10.12.1.1"/>
+    </dependencies>
+</ivy-module>
