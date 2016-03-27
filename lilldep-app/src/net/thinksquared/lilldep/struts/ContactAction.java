@@ -26,20 +26,21 @@ import javax.servlet.http.*;
 import org.apache.struts.action.*;
 import net.thinksquared.lilldep.database.*;
 
-public final class ContactAction extends Action{
+public final class ContactAction extends Action {
 
-    public ActionForward execute(ActionMapping mapping,
-                                 ActionForm form,
-                                 HttpServletRequest request,
-                                 HttpServletResponse response)
-    throws Exception{
-
-        return null; //REMOVE this line!
-
-        /* Your implementation here */
-        
-    }
+	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		try {
+			ContactForm contactForm = (ContactForm) form;
+			contactForm.getContact().save();
+			contactForm.setContact(new Contact()); //Interesting moment here
+		} catch (Exception ex) {
+			ActionMessages errors = new ActionMessages();
+			errors.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage("lilldep.error.save"));
+			saveErrors(request, errors);
+			return mapping.getInputForward();
+		}
+		return mapping.findForward("success");
+	}
 
 }
-
-

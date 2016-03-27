@@ -1,6 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
-<!-- YOUR TAGLIB DECLARATIONS HERE -->
+<%@ taglib uri="/tags/bean" prefix="bean"%>
+<%@ taglib uri="/tags/html" prefix="html"%>
+<%@ taglib uri="/tags/logic" prefix="logic"%>
+<%@ taglib uri="/tags/nested" prefix="nested"%>
+<%@ taglib uri="/tags/tiles" prefix="tiles"%>
 
 <html:html>
 
@@ -18,14 +21,17 @@
       <li><a href="Listing.do"><bean:message key="lilldep.jsp.listing.nav"/></a></li>
     </ul> 	
 
-        <h2><!-- GLOBAL ERROR MESSAGE FROM LAB 7 HERE  --></h2>
+        <h2><html:errors property="org.apache.struts.action.GLOBAL_MESSAGE"/>
+        <!-- GLOBAL ERROR MESSAGE FROM LAB 7 HERE  --></h2>
     
         <html:form action="ContactFormHandler.do" focus="name">
 
         <table> 
         
             <tr>
-                <!-- LABEL, INPUT and ERROR TAG for "NAME" property HERE -->
+                <td align="right"><bean:message key="lilldep.jsp.dataentry.prompt.name"/></td>            
+            <td><html:text property="designation" size="60" /><html:error property="name"/></td>
+            <!-- LABEL, INPUT and ERROR TAG for "NAME" property HERE -->
             </tr>
 
             <tr>            
@@ -38,17 +44,17 @@
             </tr>
 
             <tr> 
-
+    <td align="right"><bean:message key="lilldep.jsp.dataentry.prompt.email"/></td>            
+            <td><html:text property="email" size="60" /><html:error property="email"/></td>
                 <!-- LABEL, INPUT and ERROR TAG for "EMAIL" property HERE -->
-
             </tr>
-
+<!-- 
             <tr>           
             <td align="right"><bean:message key="lilldep.jsp.dataentry.prompt.company"/></td>            
             <td><html:text property="company" size="60" /></td>
-            </tr><tr>            
-
-            <td align="right"><bean:message key="lilldep.jsp.dataentry.prompt.address"/></td>            
+            </tr>            
+ -->
+            <tr><td align="right"><bean:message key="lilldep.jsp.dataentry.prompt.address"/></td>            
             <td><html:textarea property="address" rows="5" cols="30"/></td>
             </tr><tr>
             
@@ -57,7 +63,9 @@
             </tr>
 
             <tr>            
-                <!-- LABEL, INPUT and ERROR TAG for "COMPANY" property HERE -->
+                    <td align="right"><bean:message key="lilldep.jsp.dataentry.prompt.company"/></td>            
+            <td><html:text property="company" size="60" /><html:error property="company"/></td>
+            <!-- LABEL, INPUT and ERROR TAG for "COMPANY" property HERE -->
             </tr>
 
             <tr>            
@@ -86,7 +94,7 @@
             </tr><tr>            
             <td colspan = "2">
 
-                <!-- YOUR SUBMIT BUTTON HERE -->
+               <html:submit>Submit</html:submit> <!-- YOUR SUBMIT BUTTON HERE -->
 
             </td></tr>           
        
