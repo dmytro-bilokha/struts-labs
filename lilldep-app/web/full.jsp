@@ -30,7 +30,7 @@
         
             <tr>
                 <td align="right"><bean:message key="lilldep.jsp.dataentry.prompt.name"/></td>            
-            <td><html:text property="designation" size="60" /><html:error property="name"/></td>
+            <td><html:text property="designation" size="60" /><html:errors property="name"/></td>
             <!-- LABEL, INPUT and ERROR TAG for "NAME" property HERE -->
             </tr>
 
@@ -45,7 +45,7 @@
 
             <tr> 
     <td align="right"><bean:message key="lilldep.jsp.dataentry.prompt.email"/></td>            
-            <td><html:text property="email" size="60" /><html:error property="email"/></td>
+            <td><html:text property="email" size="60" /><html:errors property="email"/></td>
                 <!-- LABEL, INPUT and ERROR TAG for "EMAIL" property HERE -->
             </tr>
 <!-- 
@@ -64,7 +64,7 @@
 
             <tr>            
                     <td align="right"><bean:message key="lilldep.jsp.dataentry.prompt.company"/></td>            
-            <td><html:text property="company" size="60" /><html:error property="company"/></td>
+            <td><html:text property="company" size="60" /><html:errors property="company"/></td>
             <!-- LABEL, INPUT and ERROR TAG for "COMPANY" property HERE -->
             </tr>
 
