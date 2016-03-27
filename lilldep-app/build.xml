@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 
-<project xmlns:ivy="antlib:org.apache.ivy.ant" default="package" name="contact-form-lab6">
+<project xmlns:ivy="antlib:org.apache.ivy.ant" default="package" name="lilldep">
 
 	<description>Lab to develop simple contact web form</description>
 

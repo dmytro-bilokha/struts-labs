@@ -41,11 +41,11 @@ public class ContactForm extends ActionForm {
 
 	public ActionErrors validate(ActionMapping mapping, HttpServletRequest request) {
 		ActionErrors errors = new ActionErrors();
-		if (contact.getCompany() == null || contact.getCompany().isEmpty())
+		if (contact.getCompany() == null || contact.getCompany().trim().isEmpty())
 			errors.add("company", new ActionMessage("lilldep.error.company"));
-		if (contact.getName() == null || contact.getName().isEmpty())
+		if (contact.getName() == null || contact.getName().trim().isEmpty())
 			errors.add("name", new ActionMessage("lilldep.error.name"));
-		if (contact.getEmail() == null || contact.getEmail().isEmpty())
+		if (contact.getEmail() == null || contact.getEmail().trim().isEmpty())
 			errors.add("email", new ActionMessage("lilldep.error.email"));
 		else if (!VALID_EMAIL_ADDRESS_REGEX.matcher(contact.getEmail()).find())
 			errors.add("email", new ActionMessage("lilldep.error.email"));
