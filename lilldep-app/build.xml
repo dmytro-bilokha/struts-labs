@@ -81,7 +81,7 @@
 			</fileset>
 		</copy>
 
-		<copy todir="${buildDir}/lib" verbose="${verbosity}">
+		<copy todir="${buildDir}/WEB-INF/lib" verbose="${verbosity}">
 			<fileset dir="${libDir}">
 				<include name="*.jar" />
 				<exclude name="servlet-api*.jar" />
