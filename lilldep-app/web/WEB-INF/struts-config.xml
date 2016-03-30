@@ -6,10 +6,19 @@
 
 <struts-config>
 
-    <form-beans></form-beans>
+	<form-beans>
+		<form-bean name="ContactFormBean"
+			type="net.thinksquared.lilldep.struts.ContactForm">
+		</form-bean>
+	</form-beans>
 
-    <action-mappings></action-mappings>
+	<action-mappings>
+		<action path="/ContactFormHandler" type="net.thinksquared.lilldep.struts.ContactAction"
+			name="ContactFormBean" scope="request" validate="true" input="/full.jsp">
+			<forward name="success" path="/full.jsp" />
+		</action>
+	</action-mappings>
 
-    <message-resources parameter="Application"/>
+	<message-resources parameter="Application" />
 
 </struts-config>
