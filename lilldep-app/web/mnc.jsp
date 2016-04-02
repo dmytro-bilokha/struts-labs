@@ -79,7 +79,7 @@
             </td></tr>           
        
           </table>               
-          <html:hidden property="classification" value="mnc"/>
+          <html:hidden property="classification" value="MNC"/>
             
           </html:form>
           
