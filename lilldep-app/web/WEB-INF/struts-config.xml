@@ -13,10 +13,17 @@
 	</form-beans>
 
 	<action-mappings>
+		
 		<action path="/ContactFormHandler" type="net.thinksquared.lilldep.struts.ContactAction"
 			name="ContactFormBean" scope="request" validate="true" input="/full.jsp">
 			<forward name="success" path="/full.jsp" />
 		</action>
+		
+		<action path="/ContactFormHandlerMNC" type="net.thinksquared.lilldep.struts.ContactAction"
+			name="ContactFormBean" scope="request" validate="true" input="/mnc.jsp">
+			<forward name="success" path="/mnc.jsp" />
+		</action>
+		
 	</action-mappings>
 
 	<message-resources parameter="Application" />
