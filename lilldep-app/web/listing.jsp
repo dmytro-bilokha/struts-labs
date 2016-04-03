@@ -1,10 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
-<!-- YOUR TAGLIB DECLARATION HERE -->
-<%@ taglib uri="/tags/bean" prefix="bean"%>
-<%@ taglib uri="/tags/html" prefix="html"%>
-<%@ taglib uri="/tags/logic" prefix="logic"%>
-<%@ taglib uri="/tags/nested" prefix="nested"%>
-<%@ taglib uri="/tags/tiles" prefix="tiles"%>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic"%>
+<%@ taglib uri="http://struts.apache.org/tags-nested" prefix="nested"%>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles"%>
 
 <html>
 

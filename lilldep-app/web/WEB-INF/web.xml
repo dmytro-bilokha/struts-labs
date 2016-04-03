@@ -39,28 +39,4 @@
 		<welcome-file>full.jsp</welcome-file>
 	</welcome-file-list>
 
-
-	<!-- Struts Tag Library Descriptors -->
-	<taglib>
-		<taglib-uri>/tags/bean</taglib-uri>
-		<taglib-location>/WEB-INF/struts-bean.tld</taglib-location>
-	</taglib>
-	<taglib>
-		<taglib-uri>/tags/html</taglib-uri>
-		<taglib-location>/WEB-INF/struts-html.tld</taglib-location>
-	</taglib>
-	<taglib>
-		<taglib-uri>/tags/logic</taglib-uri>
-		<taglib-location>/WEB-INF/struts-logic.tld</taglib-location>
-	</taglib>
-	<taglib>
-		<taglib-uri>/tags/nested</taglib-uri>
-		<taglib-location>/WEB-INF/struts-nested.tld</taglib-location>
-	</taglib>
-	<taglib>
-		<taglib-uri>/tags/tiles</taglib-uri>
-		<taglib-location>/WEB-INF/struts-tiles.tld</taglib-location>
-	</taglib>
-
-
 </web-app>
