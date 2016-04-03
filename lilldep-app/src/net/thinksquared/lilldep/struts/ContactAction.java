@@ -30,6 +30,9 @@ public final class ContactAction extends Action {
 
 	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
+		response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+		response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+		response.setHeader("Expires", "0"); // Proxies.
 		try {
 			ContactForm contactForm = (ContactForm) form;
 			contactForm.getContact().save();
