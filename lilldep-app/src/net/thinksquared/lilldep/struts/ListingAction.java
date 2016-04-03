@@ -1,5 +1,7 @@
 package net.thinksquared.lilldep.struts;
 
+import java.util.Iterator;
+
 /*******************************************************
 * Lists all contacts
 * author: Arnold Doray
@@ -34,11 +36,9 @@ public final class ListingAction extends Action implements JSPConstants{
                                  HttpServletResponse response)
     throws Exception{
 
-        return null;//REMOVE THIS LINE!
-
-        /* Your implementation here */
-
-        
+    	Iterator contactIterator = ContactPeer.doSelect(new Criteria());
+        request.setAttribute(JSPConstants.LISTING, contactIterator);
+        return mapping.findForward("success");
     }
 
 }

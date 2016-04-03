@@ -24,6 +24,11 @@
 			<forward name="success" path="/mnc.jsp" />
 		</action>
 		
+		<action path="/Listing" type="net.thinksquared.lilldep.struts.ListingAction"
+			 input="/listing.jsp">
+			<forward name="success" path="/listing.jsp" />
+		</action>
+		
 	</action-mappings>
 
 	<message-resources parameter="Application" />
