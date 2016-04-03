@@ -44,8 +44,7 @@
 						key="lilldep.jsp.dataentry.prompt.website" /></strong></td>
 		</tr>
 
-		<logic:iterate name="JSPConstants.LISTING" id="contact"
-			indexId="cnt">
+		<logic:iterate name="listing" id="contact" indexId="cnt">
 			<!-- DISPLAY THE LISTING HERE -->
 			<tr>
 				<td><bean:write name="contact" property="name" /></td>
@@ -53,7 +52,9 @@
 				<td><bean:write name="contact" property="company" /></td>
 				<td><bean:write name="contact" property="address" /></td>
 				<td><bean:write name="contact" property="postcode" /></td>
-				<td><bean:write name="contact" property="website" /></td>
+				<td><a href="<bean:write name="contact" property="website" />">
+						<bean:write name="contact" property="website" />
+				</a></td>
 			</tr>
 		</logic:iterate>
 	</table>
