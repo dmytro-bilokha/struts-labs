@@ -38,53 +38,53 @@
 				<tr>
 					<td align="right"><bean:message
 							key="lilldep.jsp.dataentry.prompt.name" /></td>
-					<td><html:text property="name" size="60" /> <span
+					<td><nested:text property="name" size="60" /> <span
 						class="error"><html:errors property="name" /></span></td>
 				</tr>
 
 				<tr>
 					<td align="right"><bean:message
 							key="lilldep.jsp.dataentry.prompt.designation" /></td>
-					<td><html:text property="designation" size="60" /></td>
+					<td><nested:text property="designation" size="60" /></td>
 				</tr>
 				<tr>
 
 					<td align="right"><bean:message
 							key="lilldep.jsp.dataentry.prompt.department" /></td>
-					<td><html:text property="department" size="60" /></td>
+					<td><nested:text property="department" size="60" /></td>
 				</tr>
 
 				<tr>
 					<td align="right"><bean:message
 							key="lilldep.jsp.dataentry.prompt.email" /></td>
-					<td><html:text property="email" size="60" /> <span
+					<td><nested:text property="email" size="60" /> <span
 						class="error"><html:errors property="email" /></span></td>
 				</tr>
 
 				<tr>
 					<td align="right"><bean:message
 							key="lilldep.jsp.dataentry.prompt.company" /></td>
-					<td><html:text property="company" size="60" /> <span
+					<td><nested:text property="company" size="60" /> <span
 						class="error"><html:errors property="company" /></span></td>
 				</tr>
 
 				<tr>
 					<td align="right"><bean:message
 							key="lilldep.jsp.dataentry.prompt.address" /></td>
-					<td><html:textarea property="address" rows="5" cols="30" /></td>
+					<td><nested:textarea property="address" rows="5" cols="30" /></td>
 				</tr>
 				<tr>
 
 					<td align="right"><bean:message
 							key="lilldep.jsp.dataentry.prompt.postcode" /></td>
-					<td><html:text property="postcode" size="8" /></td>
+					<td><nested:text property="postcode" size="8" /></td>
 				</tr>
 
 				<tr>
 					<td align="right"><bean:message
 							key="lilldep.jsp.dataentry.prompt.tel" /></td>
-					<td><html:text property="tel" size="20" /> <bean:message
-							key="lilldep.jsp.dataentry.prompt.fax" /> <html:text
+					<td><nested:text property="tel" size="20" /> <bean:message
+							key="lilldep.jsp.dataentry.prompt.fax" /> <nested:text
 							property="fax" size="20" /></td>
 				</tr>
 				<tr>
@@ -92,26 +92,26 @@
 
 					<td align="right"><bean:message
 							key="lilldep.jsp.dataentry.prompt.website" /></td>
-					<td><html:text property="website" size="60" /></td>
+					<td><nested:text property="website" size="60" /></td>
 				</tr>
 				<tr>
 
 					<td align="right"><bean:message
 							key="lilldep.jsp.dataentry.prompt.activity" /></td>
-					<td><html:textarea property="activity" rows="5" cols="30" /></td>
+					<td><nested:textarea property="activity" rows="5" cols="30" /></td>
 				</tr>
 				<tr>
 
 
 					<td align="right"><bean:message
 							key="lilldep.jsp.dataentry.prompt.classification" /></td>
-					<td><html:text property="classification" size="60" /></td>
+					<td><nested:text property="classification" size="60" /></td>
 				</tr>
 				<tr>
 
 					<td align="right"><bean:message
 							key="lilldep.jsp.dataentry.prompt.memo" /></td>
-					<td><html:textarea property="memo" rows="5" cols="30" /></td>
+					<td><nested:textarea property="memo" rows="5" cols="30" /></td>
 				</tr>
 				<tr>
 					<td colspan="2"><html:submit>
