@@ -4,6 +4,7 @@
 <%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic"%>
 <%@ taglib uri="http://struts.apache.org/tags-nested" prefix="nested"%>
 <%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles"%>
+<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c"%>
 
 <html>
 
@@ -43,19 +44,17 @@
 						key="lilldep.jsp.dataentry.prompt.website" /></strong></td>
 		</tr>
 
-		<logic:iterate name="listing" id="contact" indexId="cnt">
-			<!-- DISPLAY THE LISTING HERE -->
+		<c:forEach var="contact" items="${listing}">
 			<tr>
-				<td><bean:write name="contact" property="name" /></td>
-				<td><bean:write name="contact" property="email" /></td>
-				<td><bean:write name="contact" property="company" /></td>
-				<td><bean:write name="contact" property="address" /></td>
-				<td><bean:write name="contact" property="postcode" /></td>
-				<td><a href="<bean:write name="contact" property="website" />">
-						<bean:write name="contact" property="website" />
-				</a></td>
+				<td><c:out value="${contact.name}" /></td>
+				<td><c:out value="${contact.email}" /></td>
+				<td><c:out value="${contact.company}" /></td>
+				<td><c:out value="${contact.address}" /></td>
+				<td><c:out value="${contact.postcode}" /></td>
+				<td><a href="<c:out value="${contact.website}" />"> <c:out
+							value="${contact.website}" /></a></td>
 			</tr>
-		</logic:iterate>
+		</c:forEach>
 	</table>
 
 </body>
