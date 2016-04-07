@@ -45,16 +45,18 @@ public final class ImportAction extends Action {
 			HttpServletResponse response) throws Exception {
 
 		ImportForm importForm = (ImportForm) form;
+		FormFile formFile = importForm.getFile();
 		try (Reader importFileReader = new BufferedReader(
-				new InputStreamReader(importForm.getFile().getInputStream()))) {
+				new InputStreamReader(formFile.getInputStream()))) {
 			Iterator<Map<String, String>> importedContactsIterator = new CSVIterator(importFileReader, "|");
 			while (importedContactsIterator.hasNext()) {
 				Map<String, String> contactMap = importedContactsIterator.next();
-				BaseContactPeer.doInsert(new Contact(contactMap));
+				(new Contact(contactMap)).save();
 			}
+			formFile.destroy();
 		} catch (Exception ex) {
 			ActionMessages errors = new ActionMessages();
-			errors.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage("lilldep.error.import"));
+			errors.add("import", new ActionMessage("lilldep.error.import"));
 			saveErrors(request, errors);
 			return mapping.getInputForward();
 		}

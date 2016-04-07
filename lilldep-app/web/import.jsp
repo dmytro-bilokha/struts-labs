@@ -28,13 +28,13 @@
 					key="lilldep.jsp.listing.nav" /></a></li>
 	</ul>
 
+	<h2><span class="error"><html:errors property="import" /></span></h2>
 	<html:form enctype="multipart/form-data" action="ImportForm.do">
 		<html:file property="file" size="20" />
 		<html:submit>
 			<bean:message key="lilldep.jsp.prompt.submit" />
 		</html:submit>
-		<span class="error"><html:errors /></span>
-	</html:form>
+			</html:form>
 
 </body>
 </html:html>

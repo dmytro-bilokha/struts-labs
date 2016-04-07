@@ -35,7 +35,7 @@
 		</action>
 
 		<action path="/ImportForm" type="net.thinksquared.lilldep.struts.ImportAction"
-			name="ImportFormBean" scope="request" validate="false" input="/import.jsp">
+			name="ImportFormBean" scope="request" validate="true" input="/import.jsp">
 			<forward name="success" path="/Listing.do" />
 		</action>
 

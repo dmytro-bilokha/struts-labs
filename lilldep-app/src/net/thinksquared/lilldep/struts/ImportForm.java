@@ -30,6 +30,17 @@ public class ImportForm extends ActionForm {
 
 	protected FormFile file;
 
+	public ActionErrors validate(ActionMapping mapping, HttpServletRequest request) {
+		if (file == null || !file.getFileName().toLowerCase().endsWith(".csv")) {
+			if (file != null)
+				file.destroy();
+			ActionErrors errors = new ActionErrors();
+			errors.add("import", new ActionMessage("lilldep.error.file-error"));
+			return errors;
+		}
+		return null;
+	}
+
 	public FormFile getFile() {
 		return file;
 	}
