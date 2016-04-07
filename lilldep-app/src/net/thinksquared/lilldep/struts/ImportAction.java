@@ -23,6 +23,8 @@ package net.thinksquared.lilldep.struts;
 ********************************************************/
 
 import java.io.*;
+import java.util.Iterator;
+import java.util.Map;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -30,23 +32,33 @@ import javax.servlet.http.*;
 import org.apache.struts.action.*;
 import org.apache.struts.upload.*;
 
+import net.thinksquared.lilldep.database.BaseContactPeer;
+
+//import com.sun.javafx.collections.MappingChange.Map;
+
+import net.thinksquared.lilldep.database.Contact;
 import net.thinksquared.lilldep.util.*;
 
+public final class ImportAction extends Action {
 
-public final class ImportAction extends Action{
+	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
 
-    public ActionForward execute(ActionMapping mapping,
-                                 ActionForm form,
-                                 HttpServletRequest request,
-                                 HttpServletResponse response)
-    throws Exception{
-
-        return null; //REMOVE!!
-
-        /** Your code here **/
-
-    }
+		ImportForm importForm = (ImportForm) form;
+		try (Reader importFileReader = new BufferedReader(
+				new InputStreamReader(importForm.getFile().getInputStream()))) {
+			Iterator<Map<String, String>> importedContactsIterator = new CSVIterator(importFileReader, "|");
+			while (importedContactsIterator.hasNext()) {
+				Map<String, String> contactMap = importedContactsIterator.next();
+				BaseContactPeer.doInsert(new Contact(contactMap));
+			}
+		} catch (Exception ex) {
+			ActionMessages errors = new ActionMessages();
+			errors.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage("lilldep.error.import"));
+			saveErrors(request, errors);
+			return mapping.getInputForward();
+		}
+		return mapping.findForward("success");
+	}
 
 }
-
-

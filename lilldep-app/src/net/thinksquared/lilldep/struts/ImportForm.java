@@ -26,12 +26,16 @@ import javax.servlet.http.*;
 import org.apache.struts.action.*;
 import org.apache.struts.upload.*;
 
-public class ImportForm extends ActionForm {       
+public class ImportForm extends ActionForm {
 
-        protected FormFile _file;
+	protected FormFile file;
 
-        /***** YOUR CODE HERE *****/
+	public FormFile getFile() {
+		return file;
+	}
+
+	public void setFile(FormFile file) {
+		this.file = file;
+	}
 
 }
-
-
