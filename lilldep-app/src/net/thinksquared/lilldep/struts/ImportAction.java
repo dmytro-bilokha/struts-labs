@@ -33,10 +33,10 @@ import org.apache.struts.action.*;
 import org.apache.struts.upload.*;
 
 import net.thinksquared.lilldep.database.BaseContactPeer;
+import net.thinksquared.lilldep.database.Contact;
 
 //import com.sun.javafx.collections.MappingChange.Map;
 
-import net.thinksquared.lilldep.database.Contact;
 import net.thinksquared.lilldep.util.*;
 
 public final class ImportAction extends Action {

@@ -21,7 +21,7 @@
 	<action-mappings>
 
 		<action path="/ContactFormHandler" type="net.thinksquared.lilldep.struts.ContactAction"
-			name="ContactFormBean" scope="request" validate="true" input="/full.jsp">
+			name="ContactFormBean" scope="session" validate="true" input="/full.jsp">
 			<forward name="success" path="/full.jsp" />
 		</action>
 
@@ -37,6 +37,11 @@
 		<action path="/ImportForm" type="net.thinksquared.lilldep.struts.ImportAction"
 			name="ImportFormBean" scope="request" validate="true" input="/import.jsp">
 			<forward name="success" path="/Listing.do" />
+		</action>
+
+		<action path="/EditContact" type="net.thinksquared.lilldep.struts.EditContactAction"
+			name="ContactFormBean" scope="session" validate="false" input="/Listing.do">
+			<forward name="success" path="/full.jsp" />
 		</action>
 
 	</action-mappings>

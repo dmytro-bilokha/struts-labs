@@ -21,24 +21,42 @@ package net.thinksquared.lilldep.struts;
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 ********************************************************/
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
-import javax.servlet.http.*;
-import org.apache.struts.action.*;
-import net.thinksquared.lilldep.database.*;
+import org.apache.struts.action.Action;
+import org.apache.struts.action.ActionForm;
+import org.apache.struts.action.ActionForward;
+import org.apache.struts.action.ActionMapping;
 
-public final class EditContactAction extends Action{
+import net.thinksquared.lilldep.database.Contact;
+import net.thinksquared.lilldep.database.ContactPeer;
+import net.thinksquared.lilldep.database.Criteria;
+import net.thinksquared.lilldep.database.Scroller;
 
-    public ActionForward execute(ActionMapping mapping,
-                                 ActionForm form,
-                                 HttpServletRequest request,
-                                 HttpServletResponse response){
+public final class EditContactAction extends Action {
 
-        return null; //REMOVE this line!
+	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
+			HttpServletResponse response) {
+		String id = request.getParameter("id");
+		if (id != null) {
+			try {
+				// get Contact by Id
+				Criteria crit = new Criteria();
+				crit.add(Contact.CONTACT_ID, Integer.parseInt(id.trim()));
+				Scroller results = ContactPeer.doSelect(crit);
+				if (!results.hasNext())
+					return mapping.getInputForward();
 
-        /* Your implementation here */
-        
-    }
+				// save Contact to form
+				ContactForm cForm = (ContactForm) form;
+				cForm.setContact((Contact) results.next());
+				return mapping.findForward("success");
+			} catch (Exception ignore) {
+				ignore.printStackTrace();
+			}
+		}
+		return mapping.getInputForward();
+	}
 
 }
-
-

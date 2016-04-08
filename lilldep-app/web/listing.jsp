@@ -5,7 +5,8 @@
 <%@ taglib uri="http://struts.apache.org/tags-nested" prefix="nested"%>
 <%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles"%>
 <%@ taglib uri="http://java.sun.com/jstl/core" prefix="c"%>
-
+<%@ taglib uri="http://java.sun.com/jstl/fmt" prefix="fmt"%>
+<fmt:setBundle basename="Application" />
 <html>
 
 <head>
@@ -34,14 +35,16 @@
 						key="lilldep.jsp.dataentry.prompt.name" /></strong></td>
 			<td width="15%"><strong><bean:message
 						key="lilldep.jsp.dataentry.prompt.email" /></strong></td>
-			<td width="20%"><strong><bean:message
+			<td width="15%"><strong><bean:message
 						key="lilldep.jsp.dataentry.prompt.company" /></strong></td>
-			<td width="40%"><strong><bean:message
+			<td width="35%"><strong><bean:message
 						key="lilldep.jsp.dataentry.prompt.address" /></strong></td>
 			<td><strong><bean:message
 						key="lilldep.jsp.dataentry.prompt.postcode" /></strong></td>
 			<td width="15%"><strong><bean:message
 						key="lilldep.jsp.dataentry.prompt.website" /></strong></td>
+			<td width="10%"><strong><bean:message
+						key="lilldep.jsp.dataentry.prompt.action" /></strong></td>
 		</tr>
 
 		<c:forEach var="contact" items="${listing}">
@@ -53,6 +56,9 @@
 				<td><c:out value="${contact.postcode}" /></td>
 				<td><a href="<c:out value="${contact.website}" />"> <c:out
 							value="${contact.website}" /></a></td>
+				<td><a
+					href="EditContact.do?id=<c:out value="${contact.contactId}" />"><fmt:message
+							key="lilldep.jsp.dataentry.prompt.edit" /></a></td>
 			</tr>
 		</c:forEach>
 	</table>
