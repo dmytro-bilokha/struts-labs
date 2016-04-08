@@ -3,6 +3,6 @@
 *.war
 *.ear
 *.class
-#lib/*
+lib/*
 dist/
 build/

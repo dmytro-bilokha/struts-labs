@@ -29,9 +29,7 @@
 	<target name="clean" description="--> remove package, classes and libs">
 		<delete dir="${buildDir}" />
 		<delete dir="${distDir}" />
-		<delete includeemptydirs="true">
-			<fileset dir="${libDir}" includes="**/*" />
-		</delete>
+		<delete dir="${libDir}" />
 	</target>
 
 	<target name="init" depends="clean" description="--> create dirs">
