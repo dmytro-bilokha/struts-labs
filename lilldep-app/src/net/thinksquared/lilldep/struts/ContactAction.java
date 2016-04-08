@@ -1,5 +1,7 @@
 package net.thinksquared.lilldep.struts;
 
+import java.util.Map;
+
 /*******************************************************
 * Add/edit/delete a contact
 * author: Arnold Doray
@@ -24,11 +26,13 @@ package net.thinksquared.lilldep.struts;
 
 import javax.servlet.http.*;
 import org.apache.struts.action.*;
+import org.apache.struts.actions.LookupDispatchAction;
+
 import net.thinksquared.lilldep.database.*;
 
-public final class ContactAction extends Action {
+public final class ContactAction extends LookupDispatchAction {
 
-	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
+	public ActionForward save(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		try {
 			ContactForm contactForm = (ContactForm) form;
@@ -41,6 +45,12 @@ public final class ContactAction extends Action {
 			return mapping.getInputForward();
 		}
 		return mapping.findForward("success");
+	}
+
+	@Override
+	protected Map getKeyMethodMap() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

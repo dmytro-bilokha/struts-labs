@@ -34,58 +34,43 @@ import org.apache.struts.tiles.actions.TilesAction;
 import net.thinksquared.lilldep.database.*;
 import net.thinksquared.lilldep.util.*;
 
+public class FindAction extends TilesLookupDispatchAction implements JSPConstants {
 
-public class FindAction extends TilesLookupDispatchAction implements JSPConstants{
+	public Map<String, String> getKeyMethodMap() {
+		HashMap<String, String> m = new HashMap<>();
+		m.put("lilldep.jsp.find.button", "find");
+		return m;
+	}
 
-    
-    public Map getKeyMethodMap(){
+	public ActionForward find(ComponentContext context, ActionMapping mapping, ActionForm form,
+			HttpServletRequest request, HttpServletResponse response) throws ServletException {
+		ContactForm contactForm = (ContactForm) form;
+		Contact contact = contactForm.getContact();
+		if (contact != null) {
+			Contact contactReplicant = contact.klone();
+			request.getSession().setAttribute(JSPConstants.FIND_QUERY, contactReplicant);
+			Scroller scroller = ContactPeer.find(contactReplicant);
+			request.setAttribute(JSPConstants.FIND_RESULTS, scroller);
+		}
+		return null;
+	}
 
-        /*** YOUR IMPLEMENTATION HERE ***/ 
+	public ActionForward unspecified(ComponentContext context, ActionMapping mapping, ActionForm form,
+			HttpServletRequest request, HttpServletResponse response) throws ServletException {
 
-        return null; //REMOVE!
+		// forward to unknown()
+		return unknown(context, mapping, form, request, response);
 
-    }
+	}
 
-
-
-    public ActionForward find(ComponentContext context,
-                                 ActionMapping mapping,
-                                 ActionForm form,
-                                 HttpServletRequest request,
-                                 HttpServletResponse response)
-    throws ServletException{
-
-        /*** YOUR IMPLEMENTATION HERE ***/ 
-
-        return null; //REMOVE!
-
-    }
-
-    public ActionForward unspecified(ComponentContext context,
-                                 ActionMapping mapping,
-                                 ActionForm form,
-                                 HttpServletRequest request,
-                                 HttpServletResponse response)
-    throws ServletException{
-
-        //forward to unknown()
-        return unknown(context,mapping,form,request,response);
-
-    }
-
-    public ActionForward unknown(ComponentContext context,
-                                 ActionMapping mapping,
-                                 ActionForm form,
-                                 HttpServletRequest request,
-                                 HttpServletResponse response)
-    throws ServletException{
-
-        /*** YOUR IMPLEMENTATION HERE ***/ 
-
-        return null; //REMOVE!
-
-    }
+	public ActionForward unknown(ComponentContext context, ActionMapping mapping, ActionForm form,
+			HttpServletRequest request, HttpServletResponse response) throws ServletException {
+		Contact contact = (Contact) request.getSession().getAttribute(JSPConstants.FIND_QUERY);
+		if (contact != null) {
+			Scroller scroller = ContactPeer.find(contact);
+			request.setAttribute(JSPConstants.FIND_RESULTS, scroller);
+		}
+		return null;
+	}
 
 }
-
-

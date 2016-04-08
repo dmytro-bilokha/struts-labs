@@ -7,15 +7,14 @@
 <struts-config>
 
 	<form-beans>
-	
+
 		<form-bean name="ContactFormBean"
 			type="net.thinksquared.lilldep.struts.ContactForm">
 		</form-bean>
-	
-		<form-bean name="ImportFormBean"
-			type="net.thinksquared.lilldep.struts.ImportForm">
+
+		<form-bean name="ImportFormBean" type="net.thinksquared.lilldep.struts.ImportForm">
 		</form-bean>
-	
+
 	</form-beans>
 
 	<action-mappings>
@@ -39,13 +38,22 @@
 			<forward name="success" path="/Listing.do" />
 		</action>
 
-		<action path="/EditContact" type="net.thinksquared.lilldep.struts.EditContactAction"
-			name="ContactFormBean" scope="session" validate="false" input="/Listing.do">
+		<action path="/EditContact"
+			type="net.thinksquared.lilldep.struts.EditContactAction" name="ContactFormBean"
+			scope="session" validate="false" input="/Listing.do">
 			<forward name="success" path="/full.jsp" />
 		</action>
+
+		<action path="/FindTile"
+			type="net.thinksquared.lilldep.struts.FindAction" name="ContactFormBean"
+			scope="session" validate="false" parameter="command">
+			</action>
 
 	</action-mappings>
 
 	<message-resources parameter="Application" />
 
+	<plug-in className="org.apache.struts.tiles.TilesPlugin">
+		<set-property property="definitions-config" value="/WEB-INF/tiles-defs.xml" />
+	</plug-in>
 </struts-config>
