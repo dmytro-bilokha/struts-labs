@@ -20,12 +20,12 @@
 	<action-mappings>
 
 		<action path="/ContactFormHandler" type="net.thinksquared.lilldep.struts.ContactAction"
-			name="ContactFormBean" scope="session" validate="true" input="/full.jsp">
+			name="ContactFormBean" scope="session" validate="true" input="/full.jsp" parameter="command">
 			<forward name="success" path="/full.jsp" />
 		</action>
 
 		<action path="/ContactFormHandlerMNC" type="net.thinksquared.lilldep.struts.ContactAction"
-			name="ContactFormBean" scope="request" validate="true" input="/mnc.jsp">
+			name="ContactFormBean" scope="request" validate="true" input="/mnc.jsp" parameter="command">
 			<forward name="success" path="/mnc.jsp" />
 		</action>
 

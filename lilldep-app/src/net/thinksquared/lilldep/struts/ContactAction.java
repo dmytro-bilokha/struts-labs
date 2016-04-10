@@ -1,5 +1,6 @@
 package net.thinksquared.lilldep.struts;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /*******************************************************
@@ -34,10 +35,15 @@ public final class ContactAction extends LookupDispatchAction {
 
 	public ActionForward save(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
+		ActionMessages formErrors = form.validate(mapping, request);
+		if (!formErrors.isEmpty()) {
+			saveErrors(request, formErrors);
+			return mapping.getInputForward();
+		}
 		try {
 			ContactForm contactForm = (ContactForm) form;
 			contactForm.getContact().save();
-			contactForm.setContact(new Contact()); //Interesting moment here
+			contactForm.setContact(new Contact()); // Interesting moment here
 		} catch (Exception ex) {
 			ActionMessages errors = new ActionMessages();
 			errors.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage("lilldep.error.save"));
@@ -47,10 +53,20 @@ public final class ContactAction extends LookupDispatchAction {
 		return mapping.findForward("success");
 	}
 
+	public ActionForward find(ActionMapping mapping, ActionForm form, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+
+		ContactForm contactForm = (ContactForm) form;
+		contactForm.setContact(new Contact());
+		return mapping.findForward("success");
+	}
+
 	@Override
-	protected Map getKeyMethodMap() {
-		// TODO Auto-generated method stub
-		return null;
+	protected Map<String, String> getKeyMethodMap() {
+		Map<String, String> m = new HashMap<>();
+		m.put("lilldep.jsp.find.button", "find");
+		m.put("lilldep.jsp.prompt.submit", "save");
+		return m;
 	}
 
 }

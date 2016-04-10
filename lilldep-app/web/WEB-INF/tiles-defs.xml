@@ -5,9 +5,5 @@
        "http://struts.apache.org/dtds/tiles-config_1_1.dtd">
 
 <tiles-definitions>
-
-
-                <!-- YOUR TILES DEFINITIONS HERE -->
-
-
+	<definition name=".find" path="find-tile.jsp" controllerUrl="/FindTile.do" />
 </tiles-definitions>
