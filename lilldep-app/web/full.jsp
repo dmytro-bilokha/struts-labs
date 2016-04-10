@@ -41,7 +41,7 @@
 								<td align="right"><bean:message
 										key="lilldep.jsp.dataentry.prompt.name" /></td>
 								<td><nested:text property="name" size="60" /> <span
-									class="error"><html:errors property="name" /></span></td>
+									class="error"><html:errors property="contact.name" /></span></td>
 							</tr>
 
 							<tr>
@@ -60,14 +60,14 @@
 								<td align="right"><bean:message
 										key="lilldep.jsp.dataentry.prompt.email" /></td>
 								<td><nested:text property="email" size="60" /> <span
-									class="error"><html:errors property="email" /></span></td>
+									class="error"><html:errors property="contact.email" /></span></td>
 							</tr>
 
 							<tr>
 								<td align="right"><bean:message
 										key="lilldep.jsp.dataentry.prompt.company" /></td>
 								<td><nested:text property="company" size="60" /> <span
-									class="error"><html:errors property="company" /></span></td>
+									class="error"><html:errors property="contact.company" /></span></td>
 							</tr>
 
 							<tr>

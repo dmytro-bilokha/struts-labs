@@ -26,9 +26,10 @@ import java.util.regex.Pattern;
 
 import javax.servlet.http.*;
 import org.apache.struts.action.*;
+import org.apache.struts.validator.ValidatorForm;
 import net.thinksquared.lilldep.database.*;
 
-public class ContactForm extends ActionForm {
+public class ContactForm extends ValidatorForm {
 
 	private static final Pattern VALID_EMAIL_ADDRESS_REGEX = Pattern
 			.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
@@ -39,18 +40,19 @@ public class ContactForm extends ActionForm {
 		contact = new Contact();
 	}
 
-	public ActionErrors validate(ActionMapping mapping, HttpServletRequest request) {
-		ActionErrors errors = new ActionErrors();
-		if (contact.getCompany() == null || contact.getCompany().trim().isEmpty())
-			errors.add("company", new ActionMessage("lilldep.error.company"));
-		if (contact.getName() == null || contact.getName().trim().isEmpty())
-			errors.add("name", new ActionMessage("lilldep.error.name"));
-		if (contact.getEmail() == null || contact.getEmail().trim().isEmpty())
-			errors.add("email", new ActionMessage("lilldep.error.email"));
-		else if (!VALID_EMAIL_ADDRESS_REGEX.matcher(contact.getEmail()).find())
-			errors.add("email", new ActionMessage("lilldep.error.email"));
-		return errors;
-	}
+	// We don't need validate function anymore, because of using validator framework
+//	public ActionErrors validate(ActionMapping mapping, HttpServletRequest request) {
+//		ActionErrors errors = new ActionErrors();
+//		if (contact.getCompany() == null || contact.getCompany().trim().isEmpty())
+//			errors.add("company", new ActionMessage("lilldep.error.company"));
+//		if (contact.getName() == null || contact.getName().trim().isEmpty())
+//			errors.add("name", new ActionMessage("lilldep.error.name"));
+//		if (contact.getEmail() == null || contact.getEmail().trim().isEmpty())
+//			errors.add("email", new ActionMessage("lilldep.error.email"));
+//		else if (!VALID_EMAIL_ADDRESS_REGEX.matcher(contact.getEmail()).find())
+//			errors.add("email", new ActionMessage("lilldep.error.email"));
+//		return errors;
+//	}
 
 	public void reset(ActionMapping mapping, HttpServletRequest request) {
 		contact.clear();

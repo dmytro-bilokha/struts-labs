@@ -20,12 +20,14 @@
 	<action-mappings>
 
 		<action path="/ContactFormHandler" type="net.thinksquared.lilldep.struts.ContactAction"
-			name="ContactFormBean" scope="session" validate="true" input="/full.jsp" parameter="command">
+			name="ContactFormBean" scope="session" validate="false" input="/full.jsp"
+			parameter="command">
 			<forward name="success" path="/full.jsp" />
 		</action>
 
 		<action path="/ContactFormHandlerMNC" type="net.thinksquared.lilldep.struts.ContactAction"
-			name="ContactFormBean" scope="request" validate="true" input="/mnc.jsp" parameter="command">
+			name="ContactFormBean" scope="request" validate="false" input="/mnc.jsp"
+			parameter="command">
 			<forward name="success" path="/mnc.jsp" />
 		</action>
 
@@ -44,10 +46,9 @@
 			<forward name="success" path="/full.jsp" />
 		</action>
 
-		<action path="/FindTile"
-			type="net.thinksquared.lilldep.struts.FindAction" name="ContactFormBean"
-			scope="session" validate="false" parameter="command">
-			</action>
+		<action path="/FindTile" type="net.thinksquared.lilldep.struts.FindAction"
+			name="ContactFormBean" scope="session" validate="false" parameter="command">
+		</action>
 
 	</action-mappings>
 
@@ -56,4 +57,10 @@
 	<plug-in className="org.apache.struts.tiles.TilesPlugin">
 		<set-property property="definitions-config" value="/WEB-INF/tiles-defs.xml" />
 	</plug-in>
+
+	<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+		<set-property property="pathnames"
+			value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml" />
+	</plug-in>
+
 </struts-config>
