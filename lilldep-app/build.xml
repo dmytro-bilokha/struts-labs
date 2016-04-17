@@ -9,7 +9,8 @@
 	<property name="distDir" location="deploy" />
 	<property name="libDir" location="lib" />
 	<property name="websrcDir" location="web" />
-	<property name="verbosity" location="true" />
+	<property name="verbosity" value="true" />
+	<property name="enabledebug" value="true" />
 
 	<path id="build.classpath">
 		<fileset dir="${libDir}">
@@ -47,7 +48,7 @@
 	</target>
 
 	<target name="compile" depends="resolve" description="--> compile project">
-		<javac destdir="${buildDir}/WEB-INF/classes">
+		<javac destdir="${buildDir}/WEB-INF/classes" verbose="${verbosity}" debug="${enabledebug}" debuglevel="lines,vars,source">
 			<src path="src" />
 			<classpath refid="build.classpath" />
 		</javac>
@@ -68,10 +69,10 @@
 		</copy>
 
 		<copy todir="${buildDir}/WEB-INF/classes" verbose="${verbosity}">
-					<fileset dir="${websrcDir}/resources">
-						<include name="*.properties" />
-					</fileset>
-				</copy>
+			<fileset dir="${websrcDir}/resources">
+				<include name="*.properties" />
+			</fileset>
+		</copy>
 
 		<copy todir="${buildDir}/styles" verbose="${verbosity}">
 			<fileset dir="${websrcDir}/styles">
@@ -92,8 +93,7 @@
 			</fileset>
 		</copy>
 
-		<java classname="net.thinksquared.lilldep.database.DatabaseSetup" fork="true"
-			dir="${buildDir}" failonerror="true">
+		<java classname="net.thinksquared.lilldep.database.DatabaseSetup" fork="true" dir="${buildDir}" failonerror="true">
 			<classpath>
 				<path refid="build.classpath" />
 				<path location="${buildDir}/WEB-INF/classes" />

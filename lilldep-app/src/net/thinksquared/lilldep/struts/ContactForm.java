@@ -35,7 +35,8 @@ public class ContactForm extends ValidatorForm {
 			.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
 
 	protected Contact contact;
-
+	private String myemail;
+	
 	public ContactForm() {
 		contact = new Contact();
 	}
@@ -65,6 +66,14 @@ public class ContactForm extends ValidatorForm {
 
 	public void setContact(Contact contact) {
 		this.contact = contact;
+	}
+
+	public String getMyemail() {
+		return myemail;
+	}
+
+	public void setMyemail(String myemail) {
+		this.myemail = myemail;
 	}
 
 }

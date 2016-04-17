@@ -19,6 +19,10 @@
 				<msg name="email" key="lilldep.error.email" />
 			</field>
 			
+			<field property="myemail" depends="email">
+				<msg name="email" key="lilldep.error.email" />
+			</field>
+			
 		</form>
 	</formset>
 </form-validation>

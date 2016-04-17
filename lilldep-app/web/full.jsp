@@ -65,6 +65,13 @@
 
 							<tr>
 								<td align="right"><bean:message
+										key="lilldep.jsp.dataentry.prompt.email" /></td>
+								<td><html:text property="myemail" size="60" /> <span
+									class="error"><html:errors property="myemail" /></span></td>
+							</tr>
+
+							<tr>
+								<td align="right"><bean:message
 										key="lilldep.jsp.dataentry.prompt.company" /></td>
 								<td><nested:text property="company" size="60" /> <span
 									class="error"><html:errors property="contact.company" /></span></td>
